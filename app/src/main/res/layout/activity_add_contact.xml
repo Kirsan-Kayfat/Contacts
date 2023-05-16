@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddContactActivity"
+    android:background="@color/cardview_dark_background">
+
+   <ImageView
+       android:id="@+id/imageViewPhoto"
+       android:layout_width="100dp"
+       android:layout_gravity="center"
+       android:layout_height="100dp"
+       android:layout_marginTop="16dp"
+       app:srcCompat="@android:drawable/ic_menu_gallery"/>
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/name_title"
+    android:layout_marginTop="16dp"
+    android:textColor="@color/white"
+    android:layout_marginHorizontal="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_name_hint"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="16dp"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/number_title"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_number_hint"
+        android:inputType="number"
+        android:layout_marginHorizontal="16dp"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/buttonSaveContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        android:layout_margin="16dp" />
+
+
+</LinearLayout>
