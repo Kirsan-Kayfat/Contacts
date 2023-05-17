@@ -1,6 +1,7 @@
 package com.shuchenysh.contacts;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "contacts")
@@ -17,6 +18,7 @@ public class Contact {
         this.number = number;
     }
 
+    @Ignore
     public Contact(String name, String number) {
         this.name = name;
         this.number = number;

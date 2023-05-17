@@ -10,10 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactsViewHolder> {
+    private List<Contact> contacts = new ArrayList<>();
 
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    private OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public List<Contact> getContacts() {
+        return new ArrayList<>(contacts);
+    }
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -32,13 +46,23 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.Contacts
         holder.textViewName.setText(contact.getName());
         holder.textViewNumber.setText(contact.getNumber());
 
-
+        holder.imageViewMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickListener.onClick(contact);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return contacts.size();
+    }
+
+    interface OnClickListener {
+
+        void onClick(Contact contact);
     }
 
     class ContactsViewHolder extends RecyclerView.ViewHolder {

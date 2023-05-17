@@ -1,6 +1,8 @@
 package com.shuchenysh.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,12 +20,20 @@ public class AddContactActivity extends AppCompatActivity {
     private TextView editTextName;
     private TextView editTextNumber;
     private Button buttonSaveContact;
+    private AddContactViewModel addContactViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
+        addContactViewModel = new ViewModelProvider(this).get(AddContactViewModel.class);
         initViews();
+        addContactViewModel.shouldCloseScreen.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                finish();
+            }
+        });
 
         buttonSaveContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,8 +41,6 @@ public class AddContactActivity extends AppCompatActivity {
                 saveContact();
             }
         });
-
-
     }
 
     private void initViews() {
@@ -49,9 +57,8 @@ public class AddContactActivity extends AppCompatActivity {
     private void saveContact() {
         String name = editTextName.getText().toString();
         String number = editTextNumber.getText().toString();
-
         Contact contact = new Contact(name, number);
-
-        finish();
+        addContactViewModel.add(contact);
     }
+
 }

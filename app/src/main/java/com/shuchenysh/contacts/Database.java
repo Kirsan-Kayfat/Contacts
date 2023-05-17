@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase;
 
 @androidx.room.Database(entities = {Contact.class}, version = 1)
 public abstract class Database extends RoomDatabase {
-
     private static Database instance = null;
     private static final String DB_NAME = "contacts.db";
 
@@ -17,4 +16,6 @@ public abstract class Database extends RoomDatabase {
         }
         return instance;
     }
+
+    public abstract Dao dao();
 }
